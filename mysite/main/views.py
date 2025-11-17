@@ -5,5 +5,5 @@ def hello_view(request):
     return render(request, "main/hello.html", context)
 
 def user_status_view(request):
-    is_loggen_in = True
-    return render(request, "main/user_status.html", {'is_logged_in': is_loggen_in})
+    is_logged_in = True
+    return render(request, "main/user_status.html", {'is_logged_in': is_logged_in})

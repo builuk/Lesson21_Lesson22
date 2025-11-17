@@ -8,6 +8,11 @@ h2 {
     color: green;
 }
 
-h2 {
+p {
     color: rebeccapurple;
+}
+
+.nav {
+    color: orange;
+    text-decoration: none;
 }

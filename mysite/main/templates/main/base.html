@@ -8,10 +8,11 @@
     <link rel="stylesheet" href="{% static 'main/style.css' %}">
 </head>
 <body>
+    <img src="{% static 'main/images/banner.png' %}" alt="Banner">
     <h2>First Menu</h2>
     <nav>
-        <a href="{% url 'age' %}">Age</a>
-        <a href="{% url 'about' %}">About</a>
+        <a class="nav" href="{% url 'age' %}">Age</a>
+        <a class="nav" href="{% url 'about' %}">About</a>
     </nav>
     <hr>
     <h2>Second Menu</h2>

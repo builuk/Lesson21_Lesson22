@@ -5,10 +5,14 @@
     <title>{% block title %} My Site {% endblock %}</title>
 </head>
 <body>
+    <h2>First Menu</h2>
     <nav>
         <a href="{% url 'age' %}">Age</a>
         <a href="{% url 'about' %}">About</a>
     </nav>
+    <hr>
+    <h2>Second Menu</h2>
+    {% include "partials/nav_menu.html" %}
 
     <header>My Site Header</header>
     <main>

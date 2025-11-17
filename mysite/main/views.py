@@ -10,3 +10,6 @@ def user_status_view(request):
 
 def about_view(request):
     return render(request, "main/about.html")
+
+def age_view(request, age=16):
+    return render(request, "main/age.html", {'age': age})

@@ -1,0 +1,11 @@
+{% extends "main/base.html" %}
+
+{% block title %}Age {% endblock %}
+
+{% block content %}
+    {% if age >= 18 %}
+    <p>You are an adult!</p>
+    {% else %}
+    <p>You are a child!!!</p>
+    {% endif %}
+{% endblock %}

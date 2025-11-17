@@ -12,4 +12,5 @@ def about_view(request):
     return render(request, "main/about.html")
 
 def age_view(request, age=16):
-    return render(request, "main/age.html", {'age': age})
+    context = {'age': age}
+    return render(request, "main/age.html", context)

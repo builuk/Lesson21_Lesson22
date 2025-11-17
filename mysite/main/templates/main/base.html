@@ -5,6 +5,11 @@
     <title>{% block title %} My Site {% endblock %}</title>
 </head>
 <body>
+    <nav>
+        <a href="{% url 'age' %}">Age</a>
+        <a href="{% url 'about' %}">About</a>
+    </nav>
+
     <header>My Site Header</header>
     <main>
         {% block content %}{% endblock %}

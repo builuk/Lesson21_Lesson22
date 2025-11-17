@@ -7,3 +7,6 @@ def hello_view(request):
 def user_status_view(request):
     is_logged_in = True
     return render(request, "main/user_status.html", {'is_logged_in': is_logged_in})
+
+def about_view(request):
+    return render(request, "main/about.html")

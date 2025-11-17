@@ -16,3 +16,8 @@ p {
     color: orange;
     text-decoration: none;
 }
+
+.nav:hover {
+    color: red;
+    text-decoration: none;
+}

@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import hello_view, user_status_view, about_view, age_view
+from .views import hello_view, user_status_view, about_view, age_view, SimpleTemplateView
 
 urlpatterns = [
     path('hello/', hello_view, name='hello'),
@@ -7,4 +7,5 @@ urlpatterns = [
     path('about/', about_view, name='about'),
     path('age/<int:age>', age_view, name='age'),
     path('age/', age_view, name='age'),
+    path('simple/', SimpleTemplateView.as_view(), name='simple'),
 ]

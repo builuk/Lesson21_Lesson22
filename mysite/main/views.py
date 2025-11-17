@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.views.generic import TemplateView
 
 def hello_view(request):
     context = {'name': 'Andrii'}
@@ -14,3 +15,6 @@ def about_view(request):
 def age_view(request, age=16):
     context = {'age': age}
     return render(request, "main/age.html", context)
+
+class SimpleTemplateView(TemplateView):
+    template_name = "main/simple.html"

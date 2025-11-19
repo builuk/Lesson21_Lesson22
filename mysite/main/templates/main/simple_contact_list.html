@@ -1,0 +1,24 @@
+{% extends "main/base.html" %}
+
+{% block title %}Simple Contact {% endblock %}
+
+{% block content %}
+    {% if sent %}
+        <p>Simple number list</p>
+        {% for simple in simple_list %}
+            <li>{{ simple }}</li>
+        {% endfor %}
+    {% else %}
+        <h1>Contact form</h1>
+        <form method="post">
+            {% csrf_token %}
+            <p>
+                Start: <input type="text" name="start">
+            </p>
+            <p>
+                Finish: <input type="text" name="finish">
+            </p>
+            <button type="submit">Send</button>
+        </form>
+    {% endif %}
+{% endblock %}

@@ -2,6 +2,8 @@ from django.shortcuts import render
 from django.views.generic import TemplateView
 import datetime
 from django.views.decorators.csrf import csrf_protect
+
+
 @csrf_protect
 def simple_contact_view(request):
     if request.method == "POST":
@@ -10,6 +12,40 @@ def simple_contact_view(request):
         return render(request, "main/simple_contact.html",
                       {'sent': True, 'name': name, 'message': message})
     return render(request, "main/simple_contact.html", {'sent': False})
+
+
+@csrf_protect
+def simple_contact_view(request):
+    if request.method == "POST":
+        name = request.POST.get("name", "")
+        message = request.POST.get("message", "")
+        return render(request, "main/simple_contact.html",
+                      {'sent': True, 'name': name, 'message': message})
+    return render(request, "main/simple_contact.html", {'sent': False})
+
+
+@csrf_protect
+def simple_contact_list_view(request):
+    if request.method == "POST":
+        start = request.POST.get("start", "")
+        finish = request.POST.get("finish", "")
+        simple_list = []
+
+        def simple_number(number):
+            for n in range(2, int(number)):
+                if number % n == 0:
+                    return False
+                else:
+                    return True
+
+        for i in range(int(start), int(finish) + 1):
+            if simple_number(i):
+                simple_list.append(i)
+
+        return render(request, "main/simple_contact_list.html",
+                      {'sent': True, 'simple_list': simple_list})
+    return render(request, "main/simple_contact_list.html", {'sent': False})
+
 
 def hello_view(request):
     context = {'name': 'Andrii'}

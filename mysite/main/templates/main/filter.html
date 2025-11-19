@@ -1,0 +1,18 @@
+{% extends "main/base.html" %}
+
+{% block title %}Filter {% endblock %}
+
+{% block content %}
+    <p>Filters</p>
+    <p>Upper: {{ name|upper }}</p>
+<p>Truncatechars: {{ name|truncatechars:4 }}</p>
+    <p>Upper Truncatechars: {{ name|upper|truncatechars:4 }}</p>
+    <ul>
+        {% for number in numbers %}
+            <li>{{ number }}</li>
+        {% endfor %}
+    </ul>
+
+
+
+{% endblock %}

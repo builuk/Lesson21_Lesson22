@@ -16,5 +16,10 @@ def age_view(request, age=16):
     context = {'age': age}
     return render(request, "main/age.html", context)
 
+def filter_view(request, name, color, numbers):
+    numbers = numbers.split(',')
+    context = {'name': name, 'color': color, 'numbers': numbers}
+    return render(request, "main/filter.html", context)
+
 class SimpleTemplateView(TemplateView):
     template_name = "main/simple.html"

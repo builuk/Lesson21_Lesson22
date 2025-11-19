@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import hello_view, user_status_view, about_view, age_view, SimpleTemplateView, filter_view
+from .views import hello_view, user_status_view, about_view, age_view, SimpleTemplateView, filter_view, StaticTemplateView, CourseInfoView
 
 urlpatterns = [
     path('hello/', hello_view, name='hello'),
@@ -9,4 +9,7 @@ urlpatterns = [
     path('age/<int:age>', age_view, name='age'),
     path('age/', age_view, name='age'),
     path('simple/', SimpleTemplateView.as_view(), name='simple'),
+path('static_page/', StaticTemplateView.as_view(), name='static'),
+    path("course-info/", CourseInfoView.as_view(), name="course-info"),
+
 ]

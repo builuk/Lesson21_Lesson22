@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView
+import datetime
 
 def hello_view(request):
     context = {'name': 'Andrii'}
@@ -17,9 +18,23 @@ def age_view(request, age=16):
     return render(request, "main/age.html", context)
 
 def filter_view(request, name, color, numbers):
+    today = datetime.date.today()
     numbers = numbers.split(',')
-    context = {'name': name, 'color': color, 'numbers': numbers}
+    context = {'name': name, 'color': color, 'numbers': numbers, 'today': today}
     return render(request, "main/filter.html", context)
 
 class SimpleTemplateView(TemplateView):
     template_name = "main/simple.html"
+
+class StaticTemplateView(TemplateView):
+    template_name = "main/static.html"
+
+
+class CourseInfoView(TemplateView):
+    template_name = "main/course_info.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["course_name"] = "Django Web Development"
+        context["duration_hours"] = 24
+        return context

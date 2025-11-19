@@ -1,0 +1,23 @@
+{% extends "main/base.html" %}
+
+{% block title %}Simple Contact {% endblock %}
+
+{% block content %}
+    {% if sent %}
+        <p>Thank you, {{name}}!</p>
+        <p>Your message : {{message}}</p>
+    {% else %}
+        <h1>Contact form</h1>
+        <form method="post">
+            {% csrf_token %}
+            <p>
+                Name: <input type="text" name="name">
+            </p>
+            <p>
+                Message: <br>
+                <textarea name="message" rows="4" col="40"></textarea>
+            </p>
+            <button type="submit">Send</button>
+        </form>
+    {% endif %}
+{% endblock %}

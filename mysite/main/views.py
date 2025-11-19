@@ -35,8 +35,7 @@ def simple_contact_list_view(request):
             for n in range(2, int(number)):
                 if number % n == 0:
                     return False
-                else:
-                    return True
+            return True
 
         for i in range(int(start), int(finish) + 1):
             if simple_number(i):

@@ -29,6 +29,7 @@ def simple_contact_list_view(request):
     if request.method == "POST":
         start = request.POST.get("start", "")
         finish = request.POST.get("finish", "")
+        mod = request.POST.get("mod")
         simple_list = []
 
         def simple_number(number):
@@ -42,7 +43,7 @@ def simple_contact_list_view(request):
                 simple_list.append(i)
 
         return render(request, "main/simple_contact_list.html",
-                      {'sent': True, 'simple_list': simple_list})
+                      {'sent': True, 'simple_list': simple_list,"mod": mod})
     return render(request, "main/simple_contact_list.html", {'sent': False})
 
 

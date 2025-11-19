@@ -1,13 +1,21 @@
 {% extends "main/base.html" %}
 
-{% block title %}Simple Contact {% endblock %}
+{% block title %}Simple Contact{% endblock %}
 
 {% block content %}
     {% if sent %}
-        <p>Simple number list</p>
-        {% for simple in simple_list %}
-            <li>{{ simple }}</li>
-        {% endfor %}
+        <h1>Simple number list</h1>
+        <ul>
+            {% for simple in simple_list %}
+                {% if mod == 'italic' %}
+                    <li><h2><i>{{ simple }}</i></h2></li>
+                {% elif mod == 'roman' %}
+                    <li><h3><b>{{ simple }}</b></h3></li>
+                {% else %}
+                    <li>{{ simple }}</li>
+                {% endif %}
+            {% endfor %}
+        </ul>
     {% else %}
         <h1>Contact form</h1>
         <form method="post">
@@ -18,6 +26,13 @@
             <p>
                 Finish: <input type="text" name="finish">
             </p>
+            <p>
+                Roman: <input type="radio" name="mod" value="roman">
+            </p>
+            <p>
+                Italic: <input type="radio" name="mod" value="italic">
+            </p>
+
             <button type="submit">Send</button>
         </form>
     {% endif %}

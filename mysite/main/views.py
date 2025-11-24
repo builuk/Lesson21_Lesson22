@@ -8,7 +8,7 @@ def contact_form_view(request):
     if request.method == "POST":
         form = ContactForm(request.POST)
         if form.is_valid():
-            return render(request, "main/contact.html", {'sent': True, 'form': form})
+            return render(request, "main/contact.html", {'sent': True, "data": form.cleaned_data})
     else:
         form = ContactForm()
     return render(request, "main/contact.html", {'sent': False, 'form': form})

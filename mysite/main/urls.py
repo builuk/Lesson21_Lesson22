@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import hello_view, user_status_view, about_view, age_view, SimpleTemplateView, filter_view, StaticTemplateView, CourseInfoView,simple_contact_view, simple_contact_list_view, water_view
+from .views import hello_view, user_status_view, about_view, age_view, SimpleTemplateView, filter_view, StaticTemplateView, CourseInfoView,simple_contact_view, simple_contact_list_view, water_view, contact_form_view
 
 urlpatterns = [
     path('hello/', hello_view, name='hello'),
@@ -14,4 +14,5 @@ path('static_page/', StaticTemplateView.as_view(), name='static'),
     path("simple_contact/", simple_contact_view, name="simple_contact"),
 path("simple_contact_list/", simple_contact_list_view, name="simple_contact_list"),
 path("water/", water_view, name="water"),
+path("contact/", contact_form_view, name="contact"),
 ]

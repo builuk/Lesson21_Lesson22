@@ -46,6 +46,29 @@ def simple_contact_list_view(request):
                       {'sent': True, 'simple_list': simple_list,"mod": mod})
     return render(request, "main/simple_contact_list.html", {'sent': False})
 
+@csrf_protect
+def water_view(request):
+    if request.method == "POST":
+        name = request.POST.get("name", "")
+        surname = request.POST.get("surname", "")
+        email = request.POST.get("email", "")
+        phone = request.POST.get("phone", "")
+        address = request.POST.get("address", "")
+        month = request.POST.get("month")
+        value = request.POST.get("value")
+        water_form = {
+        'name': name,
+        'surname': surname,
+        'email': email,
+        'phone': phone,
+        'address': address,
+        'month': month,
+        'value': value
+        }
+
+        return render(request, "main/water.html",
+                      {'sent': True, 'water_form': water_form})
+    return render(request, "main/water.html", {'sent': False})
 
 def hello_view(request):
     context = {'name': 'Andrii'}

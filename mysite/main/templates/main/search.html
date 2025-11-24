@@ -1,0 +1,25 @@
+<!-- main/templates/main/search.html -->
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Пошук</title>
+</head>
+<body>
+    <h1>Пошук</h1>
+
+    <form method="get">
+        {{ form.as_p }}
+        <button type="submit">Шукати</button>
+    </form>
+
+    <h2>Результати</h2>
+    <ul>
+        {% for item in results %}
+            <li>{{ item }}</li>
+        {% empty %}
+            <li>Нічого не знайдено</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

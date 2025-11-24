@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import hello_view, user_status_view, about_view, age_view, SimpleTemplateView, filter_view, StaticTemplateView, CourseInfoView,simple_contact_view, simple_contact_list_view, water_view, contact_form_view,profile_form_view, demo_controls_view
+from .views import hello_view, user_status_view, about_view, age_view, SimpleTemplateView, filter_view, StaticTemplateView, CourseInfoView,simple_contact_view, simple_contact_list_view, water_view, contact_form_view,profile_form_view, demo_controls_view, search_view
 
 urlpatterns = [
     path('hello/', hello_view, name='hello'),
@@ -16,5 +16,6 @@ path("simple_contact_list/", simple_contact_list_view, name="simple_contact_list
 path("water/", water_view, name="water"),
 path("contact/", contact_form_view, name="contact"),
 path("profile-form/", profile_form_view, name="profile-form"),
-path("demo-controls/", demo_controls_view, name="demo-controls")
+path("demo-controls/", demo_controls_view, name="demo-controls"),
+path("search/", search_view, name="search"),
 ]

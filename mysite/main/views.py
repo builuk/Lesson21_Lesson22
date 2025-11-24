@@ -2,7 +2,18 @@ from django.shortcuts import render
 from django.views.generic import TemplateView
 import datetime
 from django.views.decorators.csrf import csrf_protect
-from .forms import ContactForm
+from .forms import ContactForm, ProfileForm
+from django.shortcuts import render
+
+def profile_form_view(request):
+    result = None
+    if request.method == "POST":
+        form = ProfileForm(request.POST)
+        if form.is_valid():
+            result = form.cleaned_data
+    else:
+        form = ProfileForm()
+    return render(request, "main/profile_form.html", {"form": form, "result": result})
 
 def contact_form_view(request):
     if request.method == "POST":

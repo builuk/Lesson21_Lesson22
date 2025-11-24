@@ -1,0 +1,12 @@
+<!-- main/templates/main/profile_form.html -->
+<h1>Profile form</h1>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Save</button>
+</form>
+
+{% if result %}
+    <h2>Result:</h2>
+    <pre>{{ result }}</pre>
+{% endif %}

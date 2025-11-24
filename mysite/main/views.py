@@ -2,8 +2,22 @@ from django.shortcuts import render
 from django.views.generic import TemplateView
 import datetime
 from django.views.decorators.csrf import csrf_protect
-from .forms import ContactForm, ProfileForm
+from .forms import ContactForm, ProfileForm, DemoControlsForm
 from django.shortcuts import render
+
+def demo_controls_view(request):
+    if request.method == "POST":
+        form = DemoControlsForm(request.POST)
+        if form.is_valid():
+            return render(
+                request,
+                "main/demo_result.html",
+                {"data": form.cleaned_data}
+            )
+    else:
+        form = DemoControlsForm()
+
+    return render(request, "main/demo_controls.html", {"form": form})
 
 def profile_form_view(request):
     result = None

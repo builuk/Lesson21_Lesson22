@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Демо елементів форм</title>
+</head>
+<body>
+    <h1>Демо елементів форм Django</h1>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Відправити</button>
+    </form>
+</body>
+</html>

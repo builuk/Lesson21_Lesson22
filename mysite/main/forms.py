@@ -191,3 +191,35 @@ class ProfileForm(forms.Form):
         help_text="FileField – завантаження будь-якого файлу",
     )
 
+class DemoControlsForm(forms.Form):
+    username = forms.CharField(label="Логін", max_length=50)
+    password = forms.CharField(
+        label="Пароль",
+        widget=forms.PasswordInput
+    )
+    age = forms.IntegerField(label="Вік", min_value=0, max_value=120)
+    birth_date = forms.DateField(
+        label="Дата народження",
+        widget=forms.DateInput(attrs={"type": "date"})
+    )
+    color = forms.ChoiceField(
+        label="Улюблений колір",
+        choices=[
+            ("red", "Червоний"),
+            ("green", "Зелений"),
+            ("blue", "Синій"),
+        ]
+    )
+    interests = forms.MultipleChoiceField(
+        label="Інтереси",
+        widget=forms.CheckboxSelectMultiple,
+        choices=[
+            ("music", "Музика"),
+            ("sport", "Спорт"),
+            ("coding", "Програмування"),
+        ]
+    )
+    agree = forms.BooleanField(
+        label="Погоджуюсь з умовами",
+        required=True
+    )

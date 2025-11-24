@@ -15,5 +15,6 @@ path('static_page/', StaticTemplateView.as_view(), name='static'),
 path("simple_contact_list/", simple_contact_list_view, name="simple_contact_list"),
 path("water/", water_view, name="water"),
 path("contact/", contact_form_view, name="contact"),
-path("profile-form/", profile_form_view, name="profile-form")
+path("profile-form/", profile_form_view, name="profile-form"),
+path("demo-controls/", views.demo_controls_view, name="demo-controls")
 ]

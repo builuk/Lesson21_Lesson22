@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Реєстрація</title>
+</head>
+<body>
+    <h1>Реєстрація</h1>
+
+    <form method="post">
+        {% csrf_token %}
+
+        {{ form.non_field_errors }}
+
+        {% for field in form %}
+            <p>
+                {{ field.label_tag }}<br>
+                {{ field }}
+                {% if field.errors %}
+                    <br><span style="color:red;">{{ field.errors }}</span>
+                {% endif %}
+            </p>
+        {% endfor %}
+
+        <button type="submit">Зареєструватися</button>
+    </form>
+</body>
+</html>

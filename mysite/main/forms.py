@@ -1,3 +1,5 @@
+from symtable import Class
+
 from django import forms
 
 class ContactForm(forms.Form):
@@ -226,3 +228,25 @@ class DemoControlsForm(forms.Form):
 
 class SearchForm(forms.Form):
     query = forms.CharField(label='Search', max_length=100, required=False)
+
+class RegisterForm(forms.Form):
+    username = forms.CharField(label="Username", max_length=20, min_length=3)
+    age = forms.IntegerField(label="Age", min_value=18, max_value=100)
+    email = forms.EmailField(label="Email", max_length=30)
+    password = forms.CharField(label="Password", min_length=6, widget=forms.PasswordInput)
+    password_confirm = forms.CharField(label="Confirm Password", min_length=6, widget=forms.PasswordInput)
+    def clean_username(self):
+        username = self.cleaned_data["username"]
+        if "admin" in username.lower():
+            raise forms.ValidationError("Логін не може містити 'admin'.")
+        return username
+
+    def clean(self):
+        cleaned_data = super().clean()
+        password = cleaned_data.get("password")
+        password_confirm = cleaned_data.get("password_confirm")
+
+        if password and password_confirm and password != password_confirm:
+            self.add_error("password_confirm", "Паролі не співпадають.")
+
+        return cleaned_data

@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.views.generic import TemplateView
 import datetime
 from django.views.decorators.csrf import csrf_protect
-from .forms import ContactForm, ProfileForm, DemoControlsForm, SearchForm
+from .forms import ContactForm, ProfileForm, DemoControlsForm, SearchForm, RegisterForm
 from django.shortcuts import render
 
 def demo_controls_view(request):
@@ -148,7 +148,6 @@ class CourseInfoView(TemplateView):
         context["duration_hours"] = 24
         return context
 
-# main/views.py
 def search_view(request):
     form = SearchForm(request.GET or None)
     results = []
@@ -158,3 +157,14 @@ def search_view(request):
         results = [f"Результат 1 для '{q}'", f"Результат 2 для '{q}'"]
 
     return render(request, "main/search.html", {"form": form, "results": results})
+
+def register_view(request):
+    if request.method == "POST":
+        form = RegisterForm(request.POST)
+        if form.is_valid():
+            # Тут могла б бути реєстрація користувача
+            return render(request, "main/register_success.html", {"data": form.cleaned_data})
+    else:
+        form = RegisterForm()
+
+    return render(request, "main/register.html", {"form": form})
